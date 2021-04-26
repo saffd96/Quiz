@@ -7,7 +7,8 @@ public class QuizController : MonoBehaviour
 
     private QuestionCollection questionCollection;
     private QuestionData currentQuestion;
-    private UIHelper uIHelper;
+    private UIHelper uiHelper;
+    private Player player;
 
     [SerializeField]
     private float delayBetweenQuestions = 3f;
@@ -20,7 +21,8 @@ public class QuizController : MonoBehaviour
     private void Awake()
     {
         questionCollection = FindObjectOfType<QuestionCollection>();
-        uIHelper = FindObjectOfType<UIHelper>();
+        uiHelper = FindObjectOfType<UIHelper>();
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()
@@ -36,7 +38,16 @@ public class QuizController : MonoBehaviour
     public void SubmitAnswer(int answerNumber)
     {
         bool isCorrect = answerNumber == currentQuestion.CorrectAnswer;
-        uIHelper.HandleSubmittedAnswer(isCorrect);
+        uiHelper.HandleSubmittedAnswer(isCorrect);
+        if (isCorrect == false)
+        {
+            player.GetDamage();
+            player.WrongAnswer();
+        }
+        else
+        {
+            player.RightAnswer();
+        }
 
         StartCoroutine(ShowNextQuestionAfterDelay());
     }
@@ -49,7 +60,7 @@ public class QuizController : MonoBehaviour
     private void CurrentQuestion()
     {
         currentQuestion = questionCollection.GetUnaskedQuestion();
-        uIHelper.SetupUIForQuestion(currentQuestion);
+        uiHelper.SetupUIForQuestion(currentQuestion);
     }
 
     private IEnumerator ShowNextQuestionAfterDelay()

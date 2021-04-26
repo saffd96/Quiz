@@ -39,10 +39,6 @@ public class UIHelper : MonoBehaviour
             answerButtons[i].gameObject.SetActive(true);
         }
 
-        for (int i = question.Answers.Length; i < answerButtons.Length; i++)
-        {
-            answerButtons[i].gameObject.SetActive(false);
-        }
     }
 
     public void HandleSubmittedAnswer(bool isCorrect)

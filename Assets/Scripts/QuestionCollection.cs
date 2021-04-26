@@ -44,7 +44,7 @@ public class QuestionCollection : MonoBehaviour
 
     private void LoadAllQuestions()
     {
-        allQuestions = Resources.LoadAll<QuestionData>("Questions").ToArray();
+        allQuestions = Resources.LoadAll<QuestionData>("Questions");
     }
 
     private void ResetQuestionsIfAllHaveBeenAsked()

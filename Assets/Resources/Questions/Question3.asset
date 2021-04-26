@@ -16,5 +16,7 @@ MonoBehaviour:
   answers:
   - 8
   - 6
+  - 12
+  - 14
   bGImage: {fileID: 21300000, guid: 50ffbf2646a39e041977424882404d4e, type: 3}
   correctAnswer: 1

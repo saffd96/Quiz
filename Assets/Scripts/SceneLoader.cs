@@ -16,10 +16,5 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
 
-    public void DestroyDuplicates()
-    {
-        GameObject.Destroy(GameObject.FindWithTag("Player"));
-    }
-
     #endregion
 }

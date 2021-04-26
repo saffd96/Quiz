@@ -30,7 +30,7 @@ public class QuestionData : ScriptableObject
 
     public int CorrectAnswer { get; }
 
-    public bool Asked { get; internal set; }
+    public bool Asked { get; set; }
 
     #endregion
 }
